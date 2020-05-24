@@ -1,13 +1,11 @@
 package com.example.mycloudapplication;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
@@ -21,13 +19,54 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
     int AUTHUI_REQUEST_CODE = 10001;
-
+    Button btn_sign_in;
+    List<AuthUI.IdpConfig> provider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if (FirebaseAuth.getInstance().getCurrentUser() != null ) {
+        provider = Arrays.asList(
+                new AuthUI.IdpConfig.EmailBuilder().build()
+        );
+
+        signIn();
+    }
+    private void signIn(){
+        startActivityForResult(
+                AuthUI.getInstance().createSignInIntentBuilder()
+                        .setAvailableProviders(provider)
+                        .setTheme(R.style.MyTheme)
+                        .build(),AUTHUI_REQUEST_CODE
+
+
+        );
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if (requestCode==AUTHUI_REQUEST_CODE){
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+            if (resultCode==RESULT_OK)
+            {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                Toast.makeText(this,""+ user.getEmail(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, MapsActivity.class);
+                startActivity(intent);
+
+            }
+        }
+
+
+
+    }
+}
+
+
+
+
+/*  if (FirebaseAuth.getInstance().getCurrentUser() != null ) {
             startActivity(new Intent(this, MapsActivity.class));
             this.finish();
         }
@@ -60,12 +99,12 @@ public class LoginActivity extends AppCompatActivity {
                 if (user.getMetadata().getCreationTimestamp() == user.getMetadata().getLastSignInTimestamp()) {
                     Toast.makeText(this, "Welcome new user", Toast.LENGTH_SHORT).show();
                 } else {
-                    //This is a returning user
+                    Toast.makeText(this, "Welcome back again", Toast.LENGTH_SHORT).show();
                 }
 
-                Intent intent = new Intent(this, MainActivity1.class);
+                Intent intent = new Intent(this, MapsActivity.class);
                 startActivity(intent);
-                this.finish();
+
 
             } else {
                 // Signing in failed
@@ -76,6 +115,4 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e(TAG, "onActivityResult: ", response.getError());
                 }
             }
-        }
-    }
-}
+        }*/
