@@ -1,5 +1,6 @@
 package com.example.mycloudapplication;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -67,6 +69,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private String[] mLikelyPlaceAttributions;
     private LatLng[] mLikelyPlaceLatLngs;
 
+   public Button btn_sign_out;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +92,27 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Places.initialize(getApplicationContext(), apiKey);
         mPlacesClient = Places.createClient(this);
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+
+
+
+        btn_sign_out = (Button) findViewById(R.id.btn_sign_out);
+
+        btn_sign_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new  Intent(getBaseContext(), MainActivity1.class);
+                startActivity(intent);
+
+
+            }
+        });
+
     }
+
+
+
 
     /**
      * Populates the app bar with the menu.
@@ -114,6 +137,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 pickCurrentPlace();
                 return true;
 
+           // case R.id.action_logout:
+
+
+             //   logOut();
+            // return true;
+
+
             default:
                 // If we got here, the user's action was not recognized.
 
@@ -121,6 +151,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         }
     }
+
+
+
+
 
     /**
      * Prompts the user for permission to use the device location.

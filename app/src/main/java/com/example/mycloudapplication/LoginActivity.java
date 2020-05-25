@@ -20,11 +20,14 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     int AUTHUI_REQUEST_CODE = 10001;
     Button btn_sign_in;
+    Button btn_sign_out;
     List<AuthUI.IdpConfig> provider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
 
         provider = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build()

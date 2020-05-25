@@ -8,5 +8,12 @@
         android:id="@+id/action_geolocate"
         android:icon="@drawable/ic_geolocate"
         android:title="@string/action_geolocate"
-        app:showAsAction="always|withText" />
+        app:showAsAction="always|withText"        />
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@drawable/common_full_open_on_phone"
+        android:title="@string/action_logout"
+        app:showAsAction="always|withText"
+
+        />
 </menu>
