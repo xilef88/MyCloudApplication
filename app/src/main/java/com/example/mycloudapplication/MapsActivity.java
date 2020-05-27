@@ -1,5 +1,4 @@
 package com.example.mycloudapplication;
-
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -41,6 +40,7 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -383,7 +383,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             // Position the map's camera at the location of the marker.
             mMap.moveCamera(CameraUpdateFactory.newLatLng(markerLatLng));
 
-
+            Intent myIntent = new Intent(MapsActivity.this, ImageActivity.class);
+            myIntent.putExtra("position", mLikelyPlaceLatLngs[position]);
+            MapsActivity.this.startActivity(myIntent);
         }
     };
 
@@ -397,5 +399,4 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         lstPlaces.setAdapter(placesAdapter);
         lstPlaces.setOnItemClickListener(listClickedHandler);
     }
-
 }
