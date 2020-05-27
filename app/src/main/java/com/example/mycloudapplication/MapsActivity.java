@@ -351,6 +351,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mMap.moveCamera(CameraUpdateFactory.newLatLng(markerLatLng));
 
             Intent myIntent = new Intent(MapsActivity.this, ImageActivity.class);
+            myIntent.putExtra("position", mLikelyPlaceLatLngs[position]);
             MapsActivity.this.startActivity(myIntent);
         }
     };
@@ -365,5 +366,4 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         lstPlaces.setAdapter(placesAdapter);
         lstPlaces.setOnItemClickListener(listClickedHandler);
     }
-
 }
