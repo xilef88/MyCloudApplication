@@ -13,11 +13,12 @@
 
 
         <activity android:name=".MapsActivity"/>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".ImageActivity"
 
 
+            />
         <activity android:name=".MainActivity1"/>
-        <activity android:name=".ImageActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

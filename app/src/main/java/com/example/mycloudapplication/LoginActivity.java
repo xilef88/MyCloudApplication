@@ -27,8 +27,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
         provider = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build()
         );
