@@ -120,10 +120,8 @@ public class ImageActivity extends AppCompatActivity {
         object.addProperty("image", encodedImage);
         object.addProperty("comment", String.valueOf(textView.getText()));
         Date date = new Date();
-
-        DatabaseReference myRef = database.getReference(date.toString());
-
-        myRef.setValue(object.toString());
+        DatabaseReference myRef = database.getReference("Posts");
+        myRef.child(date.toString()).setValue(object.toString());
     }
 
     public static Bitmap drawableToBitmap (Drawable drawable) {
