@@ -40,7 +40,6 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -55,8 +54,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     // location retrieved by the Fused Location Provider.
     private Location mLastKnownLocation;
 
-    // A default location (Sydney, Australia) and default zoom to use when location permission is
-    // not granted.
+    // A default location
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
     private static final int DEFAULT_ZOOM = 15;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
@@ -115,7 +113,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Populates the app bar with the menu.
+     * Populates the app bar, NO FUNCTION
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -137,15 +135,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 pickCurrentPlace();
                 return true;
 
-           // case R.id.action_logout:
-
-
-             //   logOut();
-            // return true;
 
 
             default:
-                // If we got here, the user's action was not recognized.
+                // the user's action was not recognized.
 
                 return super.onOptionsItemSelected(item);
 
@@ -156,9 +149,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-    /**
-     * Prompts the user for permission to use the device location.
-     */
+
     private void getLocationPermission() {
         /*
          * Request location permission, so that we can get the location of the
@@ -197,13 +188,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
-     * Manipulates the map once available.
+     * Maps template
      * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
      * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
+
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -227,9 +215,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
-     * Calls the findCurrentPlace method in Google Maps Platform Places API.
+     * Google Maps Platform Places API.
      * Response contains a list of placeLikelihood objects.
-     * Takes the most likely places and extracts the place details for access in other methods.
+     * Takes the most likely places and extracts the place details for
      */
     private void getCurrentPlaceLikelihoods() {
         // Use fields to define the data types to return.

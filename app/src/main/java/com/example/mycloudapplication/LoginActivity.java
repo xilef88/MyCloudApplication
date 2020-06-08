@@ -27,12 +27,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+    //FirebaseUI provider "EMAIL"
         provider = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build()
         );
 
         signIn();
     }
+    //Sign in intent and RUN
     private void signIn(){
         startActivityForResult(
                 AuthUI.getInstance().createSignInIntentBuilder()
@@ -43,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
 
         );
     }
+
+    // CHECK if SIGN IN is OK OR NOT PRINT EMAIL OF LOGGGED IN
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         super.onActivityResult(requestCode,resultCode,data);
@@ -66,54 +70,3 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
-/*  if (FirebaseAuth.getInstance().getCurrentUser() != null ) {
-            startActivity(new Intent(this, MapsActivity.class));
-            this.finish();
-        }
-    }
-
-    public void handleLoginRegister(View view) {
-
-        List<AuthUI.IdpConfig> provider = Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build()
-        );
-
-                Intent intent = AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setAvailableProviders(provider)
-                        .setTosAndPrivacyPolicyUrls("https://example.com", "https://example.com")
-                        .setLogo(R.drawable.ic_launcher_foreground)
-                        .build();
-                startActivityForResult(intent, AUTHUI_REQUEST_CODE);
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode== AUTHUI_REQUEST_CODE){
-            if (resultCode== RESULT_OK){
-                // we have sign in the user or new user
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                Log.d(TAG,"onActivityResult: " + user.getEmail());
-                if (user.getMetadata().getCreationTimestamp() == user.getMetadata().getLastSignInTimestamp()) {
-                    Toast.makeText(this, "Welcome new user", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Welcome back again", Toast.LENGTH_SHORT).show();
-                }
-
-                Intent intent = new Intent(this, MapsActivity.class);
-                startActivity(intent);
-
-
-            } else {
-                // Signing in failed
-                IdpResponse response = IdpResponse.fromResultIntent(data);
-                if (response == null) {
-                    Log.d(TAG, "onActivityResult: the user has cancelled the sign in request");
-                } else {
-                    Log.e(TAG, "onActivityResult: ", response.getError());
-                }
-            }
-        }*/
