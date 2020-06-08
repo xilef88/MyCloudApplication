@@ -66,7 +66,7 @@ public class ImageActivity extends AppCompatActivity {
                 Intent intent = getIntent();
                String string = String.valueOf(intent.getExtras().get("position"));
                 sendData(string);
-                Toast.makeText(ImageActivity.this, "gallery is clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ImageActivity.this, "Post Sent", Toast.LENGTH_SHORT).show();
             }
         });
     }

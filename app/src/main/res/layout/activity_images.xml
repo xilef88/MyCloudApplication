@@ -21,10 +21,10 @@
         android:id="@+id/camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:text="Camera"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -32,7 +32,6 @@
         android:id="@+id/gallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="Send"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -43,10 +42,9 @@
         android:id="@+id/commentText"
         android:layout_width="266dp"
         android:layout_height="89dp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/places_text_black_alpha_26"
-        android:text="TextView"
         android:background="@color/quantum_white_100"
+        android:text="TextView"
+        android:textColor="@color/places_text_black_alpha_26"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,12 +54,13 @@
         android:id="@+id/textView2"
         android:layout_width="72dp"
         android:layout_height="29dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
 
         android:clickable="false"
         android:text="Comment"
         android:textColor="@color/quantum_white_100"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/camera" />
 
