@@ -114,14 +114,12 @@ public class ImageActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-
-        JsonObject object = new JsonObject();
-        object.addProperty("position", google);
-        object.addProperty("image", encodedImage);
-        object.addProperty("comment", String.valueOf(textView.getText()));
         Date date = new Date();
-        DatabaseReference myRef = database.getReference("Posts");
-        myRef.child(date.toString()).setValue(object.toString());
+        DatabaseReference myRef = database.getReference("CloudProject/" + date.toString());
+
+        myRef.child("position").setValue(google);
+        myRef.child("image").setValue(encodedImage);
+        myRef.child("comment").setValue(String.valueOf(textView.getText()));
     }
 
     public static Bitmap drawableToBitmap (Drawable drawable) {
